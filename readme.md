@@ -1,11 +1,11 @@
 # lrDragNDrop
 
-`lrDragNDrop` is a drag and drop module for `Angularjs` which allows to drag items from one collection and drop to another one; or reorder the items within the same collection
+*lrDragNDrop* is a drag and drop module for *Angularjs* which allows to drag items from one collection and drop to another one; or reorder the items within the same collection
 It is "item oriented" which imply:
   * the directives must be used with the standard ngRepeat directive
   * "adorners" can be added
   * works only with non empty collections
-  * you may want to have a look at [sdfdf](sdfdsf) if you don't need this "item oriented" approach
+  * you may want to have a look at [angular-dragon-drop](https://github.com/btford/angular-dragon-drop) if you don't need this "item oriented" approach
 It is about 150 lines of code and has no dependency to third party library (except the framework itself).
 
 See demo example [here](gh-pages)
@@ -13,36 +13,38 @@ See demo example [here](gh-pages)
 ## getting started
 
 add the module to your application using standard angularjs module management
-```javascript```
+```javascript
 angular.module('myApp',['lrDragNdrop']);
-
+```
 ### drag source directives
 
 add one the two following source directives to a repeated items collection to make a collection become a drag source
 
-```markup```
+```html
 <ul>
     <li ng-repeat="item in collection" lr-drag-src="anyNamespace">{{item}}</li>
 </ul>
+```
 
 The model associated to the dragged item will be removed from the collection once it is dropped into a drop target with the same namespace (see below)
 
-```markup```
+```html
 <ul>
     <li ng-repeat="item in collection" lr-drag-src-safe="anyNamespace">{{item}}</li>
 </ul>
+```
 
-The model associated will not be removed and a copy of the reference will be added to the target collection
+The model associated will not be removed from the source collection and a copy of the reference will be added to the target collection
 
 Note: if you don't specify a namespace, a "global" namespace will be assumed
 
 ### drop target directive
 
-```markup```
+```html
 <ul>
     <li ng-repeat="item in targetCollection" lr-drop-target="anyNamespace">{{item}}</li>
 </ul>
-
+```
 the targetCollection will be able to get all the dragged items if there were taken from a source with the same namespace
 
 Note a target can be its own source (if you want to use drag and drop to reorder the items)
@@ -61,4 +63,26 @@ However you can easily attach your own directive base on the ``lrDragStore`` ser
 
 ##Licence
 
-MIT
+lrDragNDrop module is under MIT license:
+
+> Copyright (C) 2013 Laurent Renard.
+>
+> Permission is hereby granted, free of charge, to any person
+> obtaining a copy of this software and associated documentation files
+> (the "Software"), to deal in the Software without restriction,
+> including without limitation the rights to use, copy, modify, merge,
+> publish, distribute, sublicense, and/or sell copies of the Software,
+> and to permit persons to whom the Software is furnished to do so,
+> subject to the following conditions:
+>
+> The above copyright notice and this permission notice shall be
+> included in all copies or substantial portions of the Software.
+>
+> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+> EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+> MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+> NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+> BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+> ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+> CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+> SOFTWARE.
