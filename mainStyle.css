@@ -1,0 +1,100 @@
+body {
+    font-family: asans-serif, sans-serif;
+    background: rgb(80, 80, 80);
+    color: rgb(220, 220, 220);
+}
+
+ul {
+    width: 500px;
+    display: inline-block;
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+}
+
+li {
+    position: relative;
+}
+
+h1, h2, h3, h4, h5 {
+    margin: 0;
+}
+
+h2 {
+    padding: 10px;
+    background: rgb(30, 30, 30);
+    color: rgb(240, 240, 240);
+}
+
+section {
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    width: 100%;
+    text-align: center;
+}
+
+.model {
+    padding: 15px;
+    background: lightgray;
+    border: 2px solid rgb(30, 30, 30);
+    color: rgb(80, 80, 80);
+    box-shadow: inset 0px 0px 8px 0px rgb(160, 160, 160);
+}
+
+.source, .target {
+    width: 40%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.lr-drop-target-after {
+    border-bottom: 2px solid orange;
+}
+
+.lr-drop-target-before {
+    border-top: 2px solid orange;
+}
+
+.lr-drop-target-after:before, .lr-drop-target-before:before {
+    position: absolute;
+    content: '';
+    border: 5px solid transparent;
+    border-left-color: orange;
+    display: inline-block;
+}
+
+.lr-drop-target-after:before {
+    z-index: 10;
+    left: -5px;
+    bottom: -6px;
+}
+
+.lr-drop-target-before:before {
+    z-index: 10;
+    left: -5px;
+    top: -6px;
+}
+
+.lr-drop-target-after:after, .lr-drop-target-before:after {
+    position: absolute;
+    content: '';
+    border: 5px solid transparent;
+    border-right-color: orange;
+    display: inline-block;
+}
+
+.lr-drop-target-after:after {
+    right: -5px;
+    bottom: -6px;
+}
+
+.lr-drop-target-before:after {
+    right: -5px;
+    top: -6px;
+}
+
+img {
+    max-width: 240px;
+    max-height: 160px;
+}
+
