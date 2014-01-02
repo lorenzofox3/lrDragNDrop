@@ -1,11 +1,13 @@
 # lrDragNDrop
 
-*lrDragNDrop* is a drag and drop module for *Angularjs* which allows to drag items from one collection and drop to another one; or reorder the items within the same collection
+*lrDragNDrop* is a drag and drop module for *Angularjs* which allows to drag items from one collection and drop to another one; or reorder the items within the same collection.
 It is "item oriented" which imply:
   * the directives must be used with the standard ngRepeat directive
   * "adorners" can be added
   * works only with non empty collections
-  * you may want to have a look at [angular-dragon-drop](https://github.com/btford/angular-dragon-drop) if you don't need this "item oriented" approach
+  * you may want to have a look at [angular-dragon-drop](https://github.com/btford/angular-dragon-drop) if you don't need this "item oriented" approach.
+   
+  
 It is about 150 lines of code and has no dependency to third party library (except the framework itself).
 
 See [demo](http://lorenzofox3.github.io/lrDragNDrop/)
