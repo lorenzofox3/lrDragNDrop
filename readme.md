@@ -8,7 +8,7 @@ It is "item oriented" which imply:
   * you may want to have a look at [angular-dragon-drop](https://github.com/btford/angular-dragon-drop) if you don't need this "item oriented" approach
 It is about 150 lines of code and has no dependency to third party library (except the framework itself).
 
-See demo example [here](gh-pages)
+See [demo](http://lorenzofox3.github.io/lrDragNDrop/)
 
 ## getting started
 
