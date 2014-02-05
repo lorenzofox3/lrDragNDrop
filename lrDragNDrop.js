@@ -44,7 +44,7 @@
         if (!repeatExpression) {
             throw Error('this directive must be used with ngRepeat directive');
         }
-        match = repeatExpression.match(/^\s*(.+)\s+in\s+(.*)\s*$/);
+        match = repeatExpression.match(/^(.*\sin).(\S*)/);
         if (!match) {
             throw Error("Expected ngRepeat in form of '_item_ in _collection_' but got '" +
                 repeatExpression + "'.");
