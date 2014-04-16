@@ -125,6 +125,7 @@
                         scope.$apply(function () {
                             collection.splice(dropIndex, 0, item);
                         });
+                        scope.$emit('collectionUpdated', collection);
                         evt.preventDefault();
                         resetStyle();
                         store.clean();
