@@ -87,7 +87,6 @@
             link: function (scope, element, attr) {
 
                 var
-                    collection,
                     key = attr.lrDropTarget || 'temp',
                     classCache = null;
 
@@ -103,10 +102,9 @@
                     }
                 }
 
-                collection = parseRepeater(scope, attr);
-
                 element.bind('drop', function (evt) {
                     var
+                        collection = parseRepeater(scope, attr),
                         collectionCopy = ng.copy(collection),
                         item = store.get(key),
                         dropIndex, i, l;
