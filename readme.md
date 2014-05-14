@@ -16,7 +16,7 @@ See [demo](http://lorenzofox3.github.io/lrDragNDrop/)
 
 add the module to your application using standard angularjs module management
 ```javascript
-angular.module('myApp',['lrDragNdrop']);
+angular.module('myApp',['lrDragNDrop']);
 ```
 ### drag source directives
 
