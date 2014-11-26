@@ -13,8 +13,7 @@
     	"draganddrop"
     ],
     "scripts": {
-    	"start": "node ./bin/http-server",
-    	"test": "vows --spec --isolate"
+    	"test": "./node_modules/karma/bin/karma start"
     },
     "contributors": [
     	{
