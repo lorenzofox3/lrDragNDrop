@@ -1,3 +1,5 @@
+"use strict";
+
 describe('lrDragNDrop', function () {
 
     describe('lrDragStore', function () {

@@ -1,0 +1,45 @@
+{
+	"name": "lrDragNDrop",
+	"author": "RENARD Laurent <laurent34azerty@gmail.com>",
+	"description": "drag and drop module for Angularjs which allows to drag items from one collection and drop to another one",
+	"main": "./lib/http-server",
+	"repository": {
+    	"type": "git",
+    	"url": "https://github.com/lorenzofox3/lrDragNDrop"
+  	},
+  	"keywords": [
+    	"angular",
+    	"directive",
+    	"draganddrop"
+    ],
+    "scripts": {
+    	"start": "node ./bin/http-server",
+    	"test": "vows --spec --isolate"
+    },
+    "contributors": [
+    	{
+      		"name": "Pavlo Bogomolenko",
+      		"email": "bpsource@gmail.com"
+    	}
+    ],
+  	"dependencies": {
+    	"karma": "~0.12.28",
+    	"karma-jasmine": "~0.3.1",
+    	"karma-chrome-launcher": "~0.1.5"
+  	},
+  	"devDependencies": {
+  	},
+  	"bugs": {
+    	"url": "https://github.com/lorenzofox3/lrDragNDrop/issues"
+  	},
+  	"licenses": [
+    	{
+      		"type": "MIT",
+      		"url": "https://github.com/lorenzofox3/lrDragNDrop"
+    	}
+  	],
+  	"engines": {
+    	"node": "~0.8 || ~0.10"
+  	},
+  	"version": "1.0.0"
+}

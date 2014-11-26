@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>lrDragNDrop demo</title>
+    <link rel="stylesheet" type="text/css" href="mainStyle.css">
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../lrDragNDrop.js"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+<section ng-controller="nonSafeCtrl">
+    <h2>Non safe source ("lr-drag-src")</h2>
+
+    <p>Drag from the left collection and drop into the right collection. This is somehow equivalent to a cut operation</p>
+
+    <div class="source">
+        <h3>source collection</h3>
+        <ul>
+            <li lr-drag-src="unsafe" ng-repeat="item in collection">
+                <h4>{{ item.title }}</h4>
+                <img ng-src="{{ item.src }}" title="{{ item.title }}">
+            </li>
+        </ul>
+        <div class="model-container"><span>model:</span>
+
+            <div class="model">{{ collection | json }}</div>
+        </div>
+    </div>
+    <div class="target">
+        <h3>target collection</h3>
+        <ul>
+            <li lr-drop-target="unsafe" ng-repeat="item in collectionBis" lr-drop-success="dropSuccess(e, item, collection)">
+                <h4>{{ item.title }}</h4>
+                <img ng-src="{{ item.src }}" title="{{ item.title }}">
+            </li>
+        </ul>
+        <div class="model-container"><span>model:</span>
+
+            <div class="model">{{ collectionBis | json }}</div>
+        </div>
+    </div>
+</section>
+<section ng-controller="safeCtrl">
+    <h2>Safe source ("lr-drag-src-safe")</h2>
+
+    <p>Drag from the left collection and drop into the right collection. This is somehow equivalent to a copy operation</p>
+
+    <div class="source">
+        <h3>source collection</h3>
+        <ul>
+            <li lr-drag-src-safe="safe" ng-repeat="item in collection">
+                <h4>{{ item.title }}</h4>
+                <img ng-src="{{ item.src }}" title="{{ item.title }}">
+            </li>
+        </ul>
+        <div class="model-container"><span>model:</span>
+
+            <div class="model">{{ collection | json }}</div>
+        </div>
+    </div>
+    <div class="target">
+        <h3>target collection</h3>
+        <ul>
+            <li lr-drop-target="safe" ng-repeat="item in collectionBis">
+                <h4>{{ item.title }}</h4>
+                <img ng-src="{{ item.src }}" title="{{ item.title }}">
+            </li>
+        </ul>
+        <div class="model-container"><span>model:</span>
+
+            <div class="model">{{ collectionBis | json }}</div>
+        </div>
+    </div>
+</section>
+<section ng-controller="reorderCtrl">
+    <h2>When the target is also the source</h2>
+
+    <p>Drag and drop the items to reorder them</p>
+
+    <div>
+        <ul>
+            <li lr-drag-src="reorder" lr-drop-target="reorder" ng-repeat="item in collection"><h4>{{ item.title }}</h4>
+                <img ng-src="{{ item.src }}" title="{{ item.title }}"></li>
+        </ul>
+        <div class="model-container"><span>model:</span>
+
+            <div class="model">{{ collection | json }}</div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

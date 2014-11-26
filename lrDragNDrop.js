@@ -1,5 +1,6 @@
 (function (ng) {
     'use strict';
+
     var module = ng.module('lrDragNDrop', []);
 
     module.service('lrDragStore', ['$document', function (document) {
@@ -17,6 +18,7 @@
         this.get = function (namespace) {
             var
                 modelItem = store[namespace], itemIndex;
+
             if (modelItem) {
                 itemIndex = modelItem.collection.indexOf(modelItem.item);
                 return modelItem.safe === true ? modelItem.item : modelItem.collection.splice(itemIndex, 1)[0];
@@ -36,53 +38,63 @@
         document.bind('dragend', this.clean);
     }]);
 
-    function parseRepeater(scope, attr) {
-        var
-            repeatExpression = attr.ngRepeat,
-            match;
+    module.service('lrDragHelper', function () {
+        var th = this;
 
-        if (!repeatExpression) {
-            throw Error('this directive must be used with ngRepeat directive');
-        }
-        match = repeatExpression.match(/^(.*\sin).(\S*)/);
-        if (!match) {
-            throw Error("Expected ngRepeat in form of '_item_ in _collection_' but got '" +
-                repeatExpression + "'.");
-        }
+        th.parseRepeater = function(scope, attr) {
+            var
+                repeatExpression = attr.ngRepeat,
+                match;
 
-        return scope.$eval(match[2]);
-    }
+            if (!repeatExpression) {
+                throw Error('this directive must be used with ngRepeat directive');
+            }
+            match = repeatExpression.match(/^(.*\sin).(\S*)/);
+            if (!match) {
+                throw Error("Expected ngRepeat in form of '_item_ in _collection_' but got '" +
+                    repeatExpression + "'.");
+            }
 
-    function lrDragSrcDirective(store, safe) {
-        return function compileFunc(el, iattr) {
-            iattr.$set('draggable', true);
-            return function linkFunc(scope, element, attr) {
-                var
-                    collection,
-                    key = (safe === true ? attr.lrDragSrcSafe : attr.lrDragSrc ) || 'temp';
+            return scope.$eval(match[2]);
+        };
 
-                collection = parseRepeater(scope, attr);
+        th.lrDragSrcDirective = function(store, safe) {
+            return function compileFunc(el, iattr) {
+                iattr.$set('draggable', true);
+                return function linkFunc(scope, element, attr) {
+                    var
+                        collection,
+                        key = (safe === true ? attr.lrDragSrcSafe : attr.lrDragSrc ) || 'temp';
 
-                element.bind('dragstart', function (evt) {
-                    store.hold(key, collection[scope.$index], collection, safe);
-                });
+                    if(attr.lrDragData) {
+                        scope.$watch(attr.lrDragData, function (newValue) {
+                            collection = newValue;
+                        });
+                    } else {
+                        collection = th.parseRepeater(scope, attr);
+                    }
+
+                    element.bind('dragstart', function (evt) {
+                        store.hold(key, collection[scope.$index], collection, safe);
+                    });
+                }
             }
         }
-    }
+    });
 
-    module.directive('lrDragSrc', ['lrDragStore', function (store) {
+    module.directive('lrDragSrc', ['lrDragStore', 'lrDragHelper', function (store, dragHelper) {
         return{
-            compile: lrDragSrcDirective(store)
+            compile: dragHelper.lrDragSrcDirective(store)
         };
     }]);
 
-    module.directive('lrDragSrcSafe', ['lrDragStore', function (store) {
+    module.directive('lrDragSrcSafe', ['lrDragStore', 'lrDragHelper', function (store, dragHelper) {
         return{
-            compile: lrDragSrcDirective(store, true)
+            compile: dragHelper.lrDragSrcDirective(store, true)
         };
     }]);
 
-    module.directive('lrDropTarget', ['lrDragStore', function (store) {
+    module.directive('lrDropTarget', ['lrDragStore', 'lrDragHelper', '$parse', function (store, dragHelper, $parse) {
         return {
             link: function (scope, element, attr) {
 
@@ -103,7 +115,13 @@
                     }
                 }
 
-                collection = parseRepeater(scope, attr);
+                if(attr.lrDragData) {
+                    scope.$watch(attr.lrDragData, function (newValue) {
+                        collection = newValue;
+                    });
+                } else {
+                    collection = dragHelper.parseRepeater(scope, attr);
+                }
 
                 element.bind('drop', function (evt) {
                     var
@@ -124,6 +142,8 @@
                         }
                         scope.$apply(function () {
                             collection.splice(dropIndex, 0, item);
+                            var fn = $parse(attr.lrDropSuccess);
+                            fn(scope, {e: evt, item: item, collection: collection});
                         });
                         evt.preventDefault();
                         resetStyle();
@@ -151,4 +171,3 @@
         };
     }]);
 })(angular);
-

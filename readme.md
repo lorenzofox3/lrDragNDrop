@@ -51,6 +51,15 @@ the targetCollection will be able to get all the dragged items if there were tak
 
 Note a target can be its own source (if you want to use drag and drop to reorder the items)
 
+### drop success callback
+
+```html
+<ul>
+    <li ng-repeat="item in targetCollection" lr-drop-success="dropSuccess(e, item, collection)">{{item}}</li>
+</ul>
+```
+Registers custom callback function that will be called after item will be dropped. Has to be used with lr-drop-target toghether.
+
 ## adorners
 
 when a source item is dragged over a target element and if they share the same namespace a class name is added to the target element following this rule
@@ -62,6 +71,17 @@ Note you can modify the source code quite easily to have something more elaborat
 ## empty collection
 The directives are associated to the item elements and not on the collection container element. So if there is no element yet in the target collection you won't be able to use the drop target feature.
 However you can easily attach your own directive base on the ``lrDragStore`` service to the container element to support the drop for empty target collection.
+
+## performance tips
+
+```html
+<ul>
+    <li ng-repeat="item in targetCollection" lr-drag-data="targetCollection">{{item}}</li>
+</ul>
+```
+
+If you have rather big collection than please use lr-drag-data attribute together with ng-repeat. This will internally prevent 
+parsing ng-repeat block and execution of $eval.
 
 ##Licence
 

@@ -1,3 +1,5 @@
+"use strict";
+
 // Karma configuration
 // Generated on Wed Jan 01 2014 20:31:07 GMT+0100 (CET)
 
@@ -14,9 +16,9 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
-            'lib/jquery.js',
-            'lib/angular.js',
-            'lib/angular-mocks.js',
+            'bower_components/jquery/jquery.js',
+            'bower_components/angular/angular.js',
+            'bower_components/angular-mocks/angular-mocks.js',
             'lrDragNDrop.js',
             'test/*.js'
         ],

@@ -1,0 +1,25 @@
+{
+  "name": "lrDragNDrop",
+  "version": "1.0.0",
+  "dependencies": {
+    "jquery": "~2.0.3",
+    "angular": "~1.2.25"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.2.25"
+  },
+  "homepage": "https://github.com/lorenzofox3/lrDragNDrop",
+  "authors": [
+    "RENARD Laurent <laurent34azerty@gmail.com>"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ]
+}
