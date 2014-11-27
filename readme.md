@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/lorenzofox3/lrDragNDrop.svg?branch=master)](https://travis-ci.org/lorenzofox3/lrDragNDrop)
+
 # lrDragNDrop
 
 *lrDragNDrop* is a drag and drop module for *Angularjs* which allows to drag items from one collection and drop to another one; or reorder the items within the same collection.
