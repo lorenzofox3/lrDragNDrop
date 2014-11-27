@@ -142,7 +142,7 @@
                         }
                         scope.$apply(function () {
                             collection.splice(dropIndex, 0, item);
-                            var fn = $parse(attr.lrDropSuccess);
+                            var fn = $parse(attr.lrDropSuccess) || ng.noop;
                             fn(scope, {e: evt, item: item, collection: collection});
                         });
                         evt.preventDefault();
