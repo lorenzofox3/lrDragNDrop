@@ -15,7 +15,7 @@
   "moduleType": [
     "globals"
   ],
-  "private": true,
+  "main": "lrDragNDrop.js",
   "ignore": [
     "**/.*",
     "node_modules",
