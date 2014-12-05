@@ -1,6 +1,14 @@
 (function (ng) {
     'use strict';
 
+    function isJqueryEventDataTransfer(){
+        return window.jQuery && (-1 == window.jQuery.event.props.indexOf('dataTransfer'));
+    }
+
+    if (isJqueryEventDataTransfer()) {
+        window.jQuery.event.props.push('dataTransfer');
+    };
+
     var module = ng.module('lrDragNDrop', []);
 
     module.service('lrDragStore', ['$document', function (document) {
@@ -76,6 +84,9 @@
 
                     element.bind('dragstart', function (evt) {
                         store.hold(key, collection[scope.$index], collection, safe);
+                        if(angular.isDefined(evt.dataTransfer)) {
+                            evt.dataTransfer.setData('text/html', null); //FF/jQuery fix
+                        }
                     });
                 }
             }
