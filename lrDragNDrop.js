@@ -7,7 +7,7 @@
 
     if (isJqueryEventDataTransfer()) {
         window.jQuery.event.props.push('dataTransfer');
-    };
+    }
 
     var module = ng.module('lrDragNDrop', []);
 
