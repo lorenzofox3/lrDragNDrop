@@ -3,7 +3,8 @@
 # lrDragNDrop
 
 *lrDragNDrop* is a drag and drop module for *Angularjs* which allows to drag items from one collection and drop to another one; or reorder the items within the same collection.
-It is "item oriented" which imply:
+
+It is "item oriented" which implies:
   * the directives must be used with the standard ngRepeat directive
   * "adorners" can be added
   * works only with non empty collections
@@ -12,17 +13,17 @@ It is "item oriented" which imply:
   
 It is about 150 lines of code and has no dependency to third party library (except the framework itself).
 
-See [demo](http://lorenzofox3.github.io/lrDragNDrop/)
+See [demo](http://lorenzofox3.github.io/lrDragNDrop/).
 
-## getting started
+## Getting Started
 
-add the module to your application using standard angularjs module management
+Add the module to your application using standard angularjs module management:
 ```javascript
 angular.module('myApp',['lrDragNDrop']);
 ```
-### drag source directives
+### Drag Source Directives
 
-add one the two following source directives to a repeated items collection to make a collection become a drag source
+Add one the two following source directives to a repeated items collection to make a collection become a drag source:
 
 ```html
 <ul>
@@ -30,7 +31,7 @@ add one the two following source directives to a repeated items collection to ma
 </ul>
 ```
 
-The model associated to the dragged item will be removed from the collection once it is dropped into a drop target with the same namespace (see below)
+The model associated to the dragged item will be removed from the collection once it is dropped into a drop target with the same namespace (see below):
 
 ```html
 <ul>
@@ -38,22 +39,22 @@ The model associated to the dragged item will be removed from the collection onc
 </ul>
 ```
 
-The model associated will not be removed from the source collection and a copy of the reference will be added to the target collection
+The model associated will not be removed from the source collection and a copy of the reference will be added to the target collection.
 
-Note: if you don't specify a namespace, a "global" namespace will be assumed
+Note: if you don't specify a namespace, a "global" namespace will be assumed.
 
-### drop target directive
+### Drop Target Directive
 
 ```html
 <ul>
     <li ng-repeat="item in targetCollection" lr-drop-target="anyNamespace">{{item}}</li>
 </ul>
 ```
-the targetCollection will be able to get all the dragged items if there were taken from a source with the same namespace
+The targetCollection will be able to get all the dragged items if there were taken from a source with the same namespace.
 
-Note a target can be its own source (if you want to use drag and drop to reorder the items)
+Note a target can be its own source (if you want to use drag and drop to reorder the items).
 
-### drop success callback
+### Drop Success Callback
 
 ```html
 <ul>
@@ -62,19 +63,19 @@ Note a target can be its own source (if you want to use drag and drop to reorder
 ```
 Registers custom callback function that will be called after item will be dropped. Has to be used with lr-drop-target toghether.
 
-## adorners
+## Adorners
 
-when a source item is dragged over a target element and if they share the same namespace a class name is added to the target element following this rule
+When a source item is dragged over a target element and if they share the same namespace a class name is added to the target element following this rule:
 * ``lr-drop-target-before``, if the cursor position is above the diagonal going from the bottom left corner to the top right corner of the target element
 * ``lr-drop-target-after``,if the cursor position is below the diagonal going from the bottom left corner to the top right corner of the target element
 
-Note you can modify the source code quite easily to have something more elaborated to take the collection orientation into account
+Note you can modify the source code quite easily to have something more elaborated to take the collection orientation into account.
 
-## empty collection
-The directives are associated to the item elements and not on the collection container element. So if there is no element yet in the target collection you won't be able to use the drop target feature.
+## Empty Collection
+The directives are associated with the item elements and not with the collection container element. So if there is no element yet in the target collection you won't be able to use the drop target feature.
 However you can easily attach your own directive base on the ``lrDragStore`` service to the container element to support the drop for empty target collection.
 
-## performance tips
+## Performance Tips
 
 ```html
 <ul>
@@ -85,7 +86,7 @@ However you can easily attach your own directive base on the ``lrDragStore`` ser
 If you have rather big collection than please use lr-drag-data attribute together with ng-repeat. This will internally prevent 
 parsing ng-repeat block and execution of $eval.
 
-##Licence
+## Licence
 
 lrDragNDrop module is under MIT license:
 
