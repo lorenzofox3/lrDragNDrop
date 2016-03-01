@@ -141,7 +141,9 @@
                         dropIndex, i, l;
                     if (item !== null) {
                         dropIndex = scope.$index;
-                        dropIndex = isAfter(evt.offsetX, evt.offsetY) ? dropIndex + 1 : dropIndex;
+                        var offsetX = window.jQuery && evt.originalEvent ? evt.originalEvent.offsetX : evt.offsetX;
+                        var offsetY = window.jQuery && evt.originalEvent ? evt.originalEvent.offsetY : evt.offsetY;
+                        dropIndex = isAfter(offsetX, offsetY) ? dropIndex + 1 : dropIndex;
                         //srcCollection=targetCollection => we may need to apply a correction
                         if (collectionCopy.length > collection.length) {
                             for (i = 0, l = Math.min(dropIndex, collection.length - 1); i <= l; i++) {
@@ -167,7 +169,9 @@
                 element.bind('dragover', function (evt) {
                     var className;
                     if (store.isHolding(key)) {
-                        className = isAfter(evt.offsetX, evt.offsetY) ? 'lr-drop-target-after' : 'lr-drop-target-before';
+                        var offsetX = window.jQuery && evt.originalEvent ? evt.originalEvent.offsetX : evt.offsetX;
+                        var offsetY = window.jQuery && evt.originalEvent ? evt.originalEvent.offsetY : evt.offsetY;
+                        className = isAfter(offsetX, offsetY) ? 'lr-drop-target-after' : 'lr-drop-target-before';
                         if (classCache !== className && classCache !== null) {
                             element.removeClass(classCache);
                         }
