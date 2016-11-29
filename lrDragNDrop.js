@@ -156,6 +156,7 @@
                             var fn = $parse(attr.lrDropSuccess) || ng.noop;
                             fn(scope, {e: evt, item: item, collection: collection});
                         });
+                        scope.$emit('collectionUpdated', collection);
                         evt.preventDefault();
                         resetStyle();
                         store.clean();
