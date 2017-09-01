@@ -61,7 +61,7 @@ Note a target can be its own source (if you want to use drag and drop to reorder
     <li ng-repeat="item in targetCollection" lr-drop-success="dropSuccess(e, item, collection)">{{item}}</li>
 </ul>
 ```
-Registers custom callback function that will be called after item will be dropped. Has to be used with lr-drop-target toghether.
+Registers custom callback function that will be called after item will be dropped. Has to be used with lr-drop-target together.
 
 ## Adorners
 
