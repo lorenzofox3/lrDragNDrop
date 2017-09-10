@@ -150,6 +150,9 @@
                                     break;
                                 }
                             }
+                            if (dropIndex < 0) {
+                                dropIndex = 0;
+                            }
                         }
                         scope.$apply(function () {
                             collection.splice(dropIndex, 0, item);
